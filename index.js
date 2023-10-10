@@ -1,5 +1,7 @@
 const express = require("express");
 
+const booksRouter = express.Router();
+
 const app = express(); // it's working
 const products = ["Apple", "Pen", "Computer"];
 
@@ -13,12 +15,22 @@ app.get("/products", (req, res, next) => {
 });
 
 app.get("/products/:id", (req, res, next) => {
-    if (products[req.params.id]) {
-      res.send(products[req.params.id]);
-    } else {
-      res.status(404).send("Product not found");
-    }
+  if (products[req.params.id]) {
+    res.send(products[req.params.id]);
+  } else {
+    res.status(404).send("Product not found");
+  }
 });
+
+booksRouter.get("/", (req, res) => {
+  res.send("Books");
+});
+
+booksRouter.get("/about", (req, res) => {
+  res.send("About books");
+});
+
+app.use("/books", booksRouter);
 
 app.listen(5000, () => {
   console.log("Its started", new Date());
