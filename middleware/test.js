@@ -1,4 +1,4 @@
-module.exports = function (err, req, res, next) {
+module.exports = function (req, res, next) {
   console.log('middleware work!');
-  res.send('product \n widdleware work!');
+  res.send('product <br> widdleware work! <br>');
 };

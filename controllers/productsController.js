@@ -1,8 +1,7 @@
 class ProductsController {
   async get(req, res, next) {
-    const text = next();
-    res.send("asd");
-    // res.json({products});
+    console.log(123123);
+    next();
   }
 
   async id(req, res, next) {
