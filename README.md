@@ -14,3 +14,8 @@
     - https://www.reddit.com/r/node/comments/8463u0/projectfolder_structure_for_nodeexpress_apps/
     - https://www.reddit.com/r/node/comments/r5iar2/how_to_organize_a_nodejs_project/
     - https://www.google.com/search?q=Express.js+project+structure+reddit&sca_esv=572205757&sxsrf=AM9HkKk7PCtwBjjUy97l0aD8QBv43aoT2Q%3A1696940376248&ei=WEElZbLnDuWuwPAPs5eigAs&ved=0ahUKEwiy89LCu-uBAxVlFxAIHbOLCLAQ4dUDCBA&uact=5&oq=Express.js+project+structure+reddit&gs_lp=Egxnd3Mtd2l6LXNlcnAiI0V4cHJlc3MuanMgcHJvamVjdCBzdHJ1Y3R1cmUgcmVkZGl0MgcQIRigARgKMggQIRgWGB4YHUi0CFBrWKMHcAF4AZABAJgB6wGgAb8GqgEFMy4yLjG4AQPIAQD4AQHCAgoQABhHGNYEGLADwgIGEAAYFhgewgIFECEYoAHiAwQYACBBiAYBkAYI&sclient=gws-wiz-serp
+
+- [ ] Шаблонизаторы выбрать на будущее:
+    - https://pugjs.org
+    - https://ejs.co/
+    - https://handlebarsjs.com/
