@@ -13,12 +13,11 @@ app.get("/products", (req, res, next) => {
 });
 
 app.get("/products/:id", (req, res, next) => {
-  res.send(products[req.params.id]);
-  //   if (products[req.params.id]) {
-  //     res.send(products[req.params.id]);
-  //   } else {
-  //     res.status(404).send("Product not found");
-  //   }
+    if (products[req.params.id]) {
+      res.send(products[req.params.id]);
+    } else {
+      res.status(404).send("Product not found");
+    }
 });
 
 app.listen(5000, () => {
