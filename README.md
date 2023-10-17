@@ -19,3 +19,10 @@
     - https://pugjs.org
     - https://ejs.co/
     - https://handlebarsjs.com/
+
+
+
+
+- https://www.youtube.com/watch?v=Oe421EPjeBE
+- https://github.com/john-smilga/node-express-course/tree/main
+- 
