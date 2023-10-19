@@ -4,9 +4,9 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
+    "1": "tsc && npm run dev",
     "build": "tsc",
-    "dev": "node ./dist/index.js",
-    "start": "tsc && npm run dev"
+    "dev": "node ./dist/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,8 +21,9 @@
     "typeorm": "^0.3.17"
   },
   "devDependencies": {
-    "@types/express": "^4.17.19",
-    "@types/node": "^20.8.6",
+    "@types/cors": "^2.8.15",
+    "@types/express": "^4.17.20",
+    "@types/node": "^20.8.7",
     "typescript": "^5.2.2"
   }
 }

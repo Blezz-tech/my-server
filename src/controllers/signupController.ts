@@ -53,4 +53,7 @@ class SignupController {
   }
 }
 
-module.exports = new SignupController();
+export const signupController = new SignupController();
+
+// const signupController = new SignupController();
+// export { signupController };

@@ -1,13 +1,13 @@
 import { Router } from 'express';
 
-const router = Router();
+const router : Router = Router();
 
 // Routers
-const signupRouter = require("./signupRouter");
-const loginRouter = require("./loginRouter");
+import {signupRouter} from "./signupRouter";
+import {loginRouter} from "./loginRouter";
 
 // use Routers
 router.use("/signup", signupRouter);
 router.use("/login", loginRouter);
 
-module.exports = router;
+export {router};

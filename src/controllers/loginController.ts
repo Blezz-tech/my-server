@@ -1,4 +1,4 @@
-import { Express, Request, Response } from 'express';
+import { Request, Response } from 'express';
 
 
 class LoginController {
@@ -94,4 +94,8 @@ class LoginController {
     }
 }
 
-module.exports = new LoginController();
+
+export const loginController = new LoginController()
+
+// const loginController = new LoginController()
+// export {loginController};

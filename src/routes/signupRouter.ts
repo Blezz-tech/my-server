@@ -1,9 +1,9 @@
 import { Router } from 'express';
-const router = Router();
+const signupRouter : Router = Router();
 
 
-const signupController = require("../controllers/signupController");
+import {signupController} from "../controllers/signupController";
 
-router.post("/", signupController.post);
+signupRouter.post("/", signupController.post);
 
-module.exports = router;
+export {signupRouter};
