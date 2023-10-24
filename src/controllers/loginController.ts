@@ -44,6 +44,12 @@ class LoginController {
                 "message": "Unauthorized",
                 "login": "invalid credentials"
             }));
+        } else {
+            res.status(200).send(({
+                "data": {
+                    "token_user": "the-best-token"
+                }
+            }));
         }
     }
 }
