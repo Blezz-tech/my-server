@@ -1,9 +1,9 @@
 import { Router } from 'express';
-const signupRouter : Router = Router();
+const signupRouter: Router = Router();
 
+import { signupController } from "../controllers/signupController";
+import { validateUser } from '../middleware/validation';
 
-import {signupController} from "../controllers/signupController";
+signupRouter.post("/", validateUser, signupController.post);
 
-signupRouter.post("/", signupController.post);
-
-export {signupRouter};
+export { signupRouter };
