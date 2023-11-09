@@ -1,12 +1,14 @@
-import express, { Express, Request, Response, Router } from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+import { createDB } from "./db/createDB.js";
 
-import {router} from "./routes/index";
+import { router } from "./routes/index.js";
 
 dotenv.config();
 
-const app: Express = express();
+createDB();
+const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors());
