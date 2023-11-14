@@ -29,11 +29,19 @@
                     ensurePermissions = { "app.*" = "ALL PRIVILEGES"; };
                   }
                 ];
-                settings.mysqld = {
-                  "sql_require_primary_key" = "on";
-                  "bind_address" = "localhost";
+                settings = {
+                  mysql = {
+                    user = "username";
+                    password = "test";
+                  };
+                  mysqld = {
+                    "sql_require_primary_key" = "on";
+                    "bind_address" = "166.78.144.191";
+                  };
                 };
               };
+
+              dotenv.enable = true;
             }];
           };
         });
