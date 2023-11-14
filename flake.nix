@@ -31,17 +31,10 @@
                 ];
                 settings.mysqld = {
                   "sql_require_primary_key" = "on";
+                  "bind_address" = "localhost";
                 };
-
               };
-
-              # users.mysql = {
-              #   passwordFile = "/run/secrets/mysql-passwd";
-              #   host = "localhost";
-              # };
-
             }];
-
           };
         });
     };
