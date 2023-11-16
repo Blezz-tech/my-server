@@ -40,8 +40,6 @@
                   # };
                 };
               };
-
-              dotenv.enable = true;
             }];
           };
         });
