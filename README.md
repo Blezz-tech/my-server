@@ -1,5 +1,8 @@
 # my-server
 
+Чтобы понять как сделать такое же, идите читать [пямятку](/docs/Памятка.md)
+
+
 - [ ] Найти плагины для vscode для nodejs
 - [ ] Найти нормальную структуру для express js
     - https://blog.logrocket.com/organizing-express-js-project-structure-better-productivity/
