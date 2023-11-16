@@ -6,7 +6,6 @@ class SignupController {
 
     insert(username, password);
     res.setHeader("content-type", "application/json");
-    // Добавить функцию вставки в базу данных администратора
     res.status(200).send({
       data: {
         message: "Administrator created",
