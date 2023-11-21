@@ -13,6 +13,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/", router);
 
-app.listen(port, () =>
+app.listen(config.port, () =>
   console.log(`Server started on port ${config.port}`, new Date())
 );
