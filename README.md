@@ -2,6 +2,8 @@
 
 Чтобы понять как сделать такое же, идите читать [памятку](/docs/Памятка.md)
 
+- [ ] Перевести проект обратно на typstscript
+- [ ] Использовать [typeorm](https://orkhan.gitbook.io/typeorm/docs/example-with-express)
 
 - [ ] Найти плагины для vscode для nodejs
 - [ ] Найти нормальную структуру для express js
