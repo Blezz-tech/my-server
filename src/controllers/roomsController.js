@@ -1,4 +1,4 @@
-import { rooms } from "../db/mulash_db.js";
+import { rooms } from "../services/mulash_db.js";
 
 class RoomsController {
   async get(req, res) {

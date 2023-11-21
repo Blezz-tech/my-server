@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { createDB } from "./db/createDB.js";
+import { createDB } from "./services/createDB.js";
 
 import { router } from "./routes/index.js";
 

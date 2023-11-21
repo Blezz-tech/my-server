@@ -1,5 +1,5 @@
 import { createJWT } from "../utils/jwt.js";
-import { admins } from "../db/mulash_db.js"; // Времмено. Пока нету БД
+import { admins } from "../services/mulash_db.js"; // Времмено. Пока нету БД
 
 class LoginController {
   async post(req, res) {

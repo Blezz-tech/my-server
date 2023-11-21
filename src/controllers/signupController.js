@@ -1,4 +1,4 @@
-import {insert} from "../db/insert.js"
+import {insert} from "../services/insert.js"
 
 class SignupController {
   async post(req, res) {
