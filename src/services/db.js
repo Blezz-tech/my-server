@@ -10,4 +10,8 @@ async function query(sql, params) {
   return results;
 }
 
-export { query };
+
+const db = {
+  query
+};
+export { db };

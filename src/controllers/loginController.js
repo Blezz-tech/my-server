@@ -1,5 +1,7 @@
 import { createJWT } from "../utils/jwt.js";
-import { admins } from "../services/mulash_db.js"; // Времмено. Пока нету БД
+import { db } from "../services/db.js";
+import { helper } from "../utils/helper.js";
+// import { admins } from "../services/mulash_db.js"; // Времмено. Пока нету БД
 
 class LoginController {
   async post(req, res) {
@@ -7,8 +9,11 @@ class LoginController {
 
     res.setHeader("content-type", "application/json");
 
+    const rows = await db.query(`SELECT username, password FROM users `);
+    const data = helper.emptyOrRows(rows);
+
     // Заменить на SQL Запрос
-    const isAdminExists = admins
+    const isAdminExists = data
       .map((admin) => username == admin.username && password == admin.password)
       .includes(true);
 
