@@ -1,14 +1,13 @@
-import { connection } from "./connect.js"
+// import { connection } from "./connect.js"
 
-const insert = (name, password) => {
-    connection.query(
-        `INSERT INTO users (username, password) VALUES ("${name}", "${password}");`,
-        (err, results, fields) => {
-            if (err) throw err;
-            console.log(results);
-        }
-    );
+// const insert = (name, password) => {
+//     connection.query(
+//         `INSERT INTO users (username, password) VALUES ("${name}", "${password}");`,
+//         (err, results, fields) => {
+//             if (err) throw err;
+//             console.log(results);
+//         }
+//     );
+// };
 
-};
-
-export { insert };
+// export { insert };

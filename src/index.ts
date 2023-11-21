@@ -2,11 +2,13 @@ import express from "express";
 import cors from "cors";
 
 import { config } from "./config.js";
-import { createDB } from "./services/createDB.js";
+
+// import { createDB } from "./services/createDB.js";
 
 import { router } from "./routes/index.js";
 
-createDB();
+// createDB();
+
 const app = express();
 
 app.use(cors());

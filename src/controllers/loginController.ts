@@ -1,19 +1,18 @@
-import { createJWT } from "../utils/jwt.js";
-import { db } from "../services/db.js";
-import { helper } from "../utils/helper.js";
-// import { admins } from "../services/mulash_db.js"; // Времмено. Пока нету БД
+// import { createJWT } from "../utils/jwt.js";
+import { admins, jwt_token } from "../services/mulash_db.js"; // Времмено. Пока нету БД
+import { Request, Response } from 'express';
 
 class LoginController {
-  async post(req, res) {
+  async post(req: Request, res: Response) {
     const { username, password } = req.body;
 
     res.setHeader("content-type", "application/json");
 
-    const rows = await db.query(`SELECT username, password FROM users `);
-    const data = helper.emptyOrRows(rows);
+    // const rows = await db.query(`SELECT username, password FROM users `);
+    // const data = helper.emptyOrRows(rows);
 
     // Заменить на SQL Запрос
-    const isAdminExists = data
+    const isAdminExists = admins
       .map((admin) => username == admin.username && password == admin.password)
       .includes(true);
 
@@ -25,7 +24,7 @@ class LoginController {
         },
       });
     } else {
-      const jwt_token = createJWT(req.body);
+      // const jwt_token = createJWT(req.body);
 
       // Сделать запрост в бд на вставку
       // INSERT INTO jwt_token

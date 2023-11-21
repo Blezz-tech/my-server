@@ -1,12 +1,12 @@
-function emptyOrRows(rows) {
-    if (!rows) {
-        return [];
-    }
-    return rows;
-}
+// function emptyOrRows(rows: [String]) {
+//     if (!rows) {
+//         return [];
+//     }
+//     return rows;
+// }
 
 
-const helper = {
-    emptyOrRows
-};
-export { helper }
+// const helper = {
+//     emptyOrRows
+// };
+// export { helper }

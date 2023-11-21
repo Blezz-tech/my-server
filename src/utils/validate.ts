@@ -1,13 +1,13 @@
 // const userEmpty = "The username field is required.";
 // const passwordEmpty = "The password field is required.";
 
+import { Request, Response, NextFunction } from "express";
 
-const empty = (item) => `The ${item} field is required.`;
+const empty = (item: String) => `The ${item} field is required.`;
 
-const validate = (fields) => {
-  return async (req, res, next) => {
-    
-    const errorsInFelds = fields.reduce((accum, field) => {
+const validate = (fields: [String]) => {
+  return async (req: any, res: Response, next: NextFunction) => {
+    const errorsInFelds = fields.reduce((accum: any, field:any) => {
       if (!req.body[field]) {
         accum[field] = empty(field);
       }

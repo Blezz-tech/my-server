@@ -1,10 +1,8 @@
 import { Router } from "express";
 const signupRouter = Router();
 
-import { signupController } from "../controllers/signupController.js";
+import { signupController } from "../controllers/signupController";
 
-import { validate } from "../utils/validate.js";
-
-signupRouter.post("/", validate(["username", "password"]), signupController.post);
+signupRouter.post("/", signupController.post);
 
 export { signupRouter };
