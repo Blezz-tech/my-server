@@ -1,8 +1,8 @@
-// import { createJWT } from "../utils/jwt.js";
-import { jwt_token } from "../services/mulash_db" // Времмено. Пока нету БД
 import { Request, Response } from 'express'
 import { Users } from "../entity/Users"
 import { myDataSource } from "../config"
+import { createJWT } from "../utils/jwt";
+// import { Tokens } from '../entity/Tokens.js';
 
 class LoginController {
   async post(req: Request, res: Response) {
@@ -13,21 +13,34 @@ class LoginController {
     // const rows = await db.query(`SELECT username, password FROM users `);
     // const data = helper.emptyOrRows(rows);
 
-    const admins = await myDataSource.getRepository(Users).find()
+    const user = await myDataSource.getRepository(Users).findBy({
+        "username": username
+    })
+    console.log(user);
 
     // Заменить на SQL Запрос
-    const isAdminExists = admins
-      .map((admin) => username == admin.username && password == admin.password)
-      .includes(true);
+    // const isAdminExists = 
+    //   .map((user) => username == user.username && password == user.password)
+    //   .includes(true);
 
-    if (!isAdminExists) {
+    if (!false) {
       res.status(401).send({
         message: "Unauthorized",
         errors: {
           login: "invalid credentials",
         },
-      });
+      })
     } else {
+      const jwt_token = createJWT(req);
+
+
+      // const user_id = await myDataSource.getRepository(Users).findBy({
+      //   "username": username
+      // })
+      // console.log(user_id)
+
+      // const admins = await myDataSource.getRepository(Tokens).find()
+
       // const jwt_token = createJWT(req.body);
 
       // Сделать запрост в бд на вставку
@@ -35,8 +48,8 @@ class LoginController {
       // VALUES (userId, jwt_token)
 
       res.status(200).send({
-        data: {
-          token_user: jwt_token,
+        "data": {
+          "token_user": jwt_token,
         },
       });
     }

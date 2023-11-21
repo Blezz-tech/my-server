@@ -4,19 +4,33 @@ import { Users } from '../entity/Users';
 
 class SignupController {
   async post(req: Request, res: Response) {
-    const { username, password }: { username: string; password: string } = req.body;
+    const { username, password } = req.body;
 
-    const user = await myDataSource.getRepository(Users).create({username, password})
-    const results = await myDataSource.getRepository(Users).save(user)
-    
-    // Добавить проверку на уникальность
-
-    res.setHeader("content-type", "application/json");
-    res.status(200).send({
-      data: {
-        message: "Administrator created",
-      },
+    const isUserExist = await myDataSource.getRepository(Users).exist({
+      where: {
+        "username": username
+      }
     });
+
+    if (!isUserExist) {
+      res.status(401).json({
+        "message": "The given data was invalid",
+        "errors": {
+          "username": [
+            "this username is exist"
+          ]
+        },
+      });
+    } else {
+      const new_user = await myDataSource.getRepository(Users).create({ username, password })
+      const results = await myDataSource.getRepository(Users).save(new_user)
+
+      res.status(200).send({
+        data: {
+          message: "Administrator created",
+        },
+      });
+    }
   }
 }
 
