@@ -13,7 +13,7 @@ class LoginController {
     // const rows = await db.query(`SELECT username, password FROM users `);
     // const data = helper.emptyOrRows(rows);
 
-    const user = await myDataSource.getRepository(Users).create(req.body)
+    const user = await myDataSource.getRepository(Users).find()
     console.log(user);
 
     // Заменить на SQL Запрос
