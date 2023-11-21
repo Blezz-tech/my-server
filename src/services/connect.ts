@@ -1,12 +1,12 @@
-// import mysql from "mysql2";
-// import dotenv from "dotenv";
-// dotenv.config();
+import { myDataSource } from "../config"
 
-// const connection = mysql.createConnection({
-//     host: process.env.DB_HOST,
-//     user: process.env.DB_USER,
-//     database: process.env.DB_NAME,
-//     password: process.env.DB_PASSWORD
-// });
+myDataSource
+    .initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization:", err)
+    })
 
-// export { connection };
+export {myDataSource}
