@@ -1,11 +1,10 @@
 import express from "express";
 import cors from "cors";
-import { myDataSource, port } from "./config.js";
+import { db, port } from "./config.js";
 import { router } from "./routes/index.js";
 
 
-myDataSource
-    .initialize()
+db.initialize()
     .then(() => {
         console.log("Data Source has been initialized!")
     })

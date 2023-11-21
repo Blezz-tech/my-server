@@ -7,7 +7,7 @@ import { Tokens } from "./entity/Tokens"
 
 dotenv.config()
 
-const myDataSource = new DataSource({
+const db = new DataSource({
     type: "mysql",
     host: process.env.DB_HOST,
     port: 3306,
@@ -21,4 +21,4 @@ const myDataSource = new DataSource({
 
 const port = process.env.PORT || 5000
 
-export { port, myDataSource }
+export { port, db }

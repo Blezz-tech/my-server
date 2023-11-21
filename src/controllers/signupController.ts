@@ -1,12 +1,17 @@
 import { Request, Response } from 'express';
-import { myDataSource } from '../config';
+import { db } from '../config';
 import { Users } from '../entity/Users';
+import { validationResult } from 'express-validator';
 
 class SignupController {
   async post(req: Request, res: Response) {
+    const result = validationResult(req);
+    if (result.isEmpty()) {
+      
+    }
     const { username, password } = req.body;
 
-    const isUserExist = await myDataSource.getRepository(Users).exist({
+    const isUserExist = await db.getRepository(Users).exist({
       where: {
         "username": username
       }
@@ -22,8 +27,8 @@ class SignupController {
         },
       });
     } else {
-      const new_user = await myDataSource.getRepository(Users).create({ username, password })
-      const results = await myDataSource.getRepository(Users).save(new_user)
+      const new_user = await db.getRepository(Users).create({ username, password })
+      const results = await db.getRepository(Users).save(new_user)
 
       res.status(200).send({
         data: {

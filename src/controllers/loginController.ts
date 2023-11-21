@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { Users } from "../entity/Users"
-import { myDataSource } from "../config"
+import { db } from "../config"
 import { createJWT } from "../utils/jwt";
 // import { Tokens } from '../entity/Tokens.js';
 
@@ -13,7 +13,7 @@ class LoginController {
     // const rows = await db.query(`SELECT username, password FROM users `);
     // const data = helper.emptyOrRows(rows);
 
-    const user = await myDataSource.getRepository(Users).findBy({
+    const user = await db.getRepository(Users).findBy({
         "username": username
     })
     console.log(user);
@@ -34,12 +34,12 @@ class LoginController {
       const jwt_token = createJWT(req);
 
 
-      // const user_id = await myDataSource.getRepository(Users).findBy({
+      // const user_id = await db.getRepository(Users).findBy({
       //   "username": username
       // })
       // console.log(user_id)
 
-      // const admins = await myDataSource.getRepository(Tokens).find()
+      // const admins = await db.getRepository(Tokens).find()
 
       // const jwt_token = createJWT(req.body);
 
