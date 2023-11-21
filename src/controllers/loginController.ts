@@ -1,5 +1,5 @@
 // import { createJWT } from "../utils/jwt.js";
-import { admins, jwt_token } from "../services/mulash_db" // Времмено. Пока нету БД
+import { jwt_token } from "../services/mulash_db" // Времмено. Пока нету БД
 import { Request, Response } from 'express'
 import { Users } from "../entity/Users"
 import { myDataSource } from "../config"
@@ -13,8 +13,7 @@ class LoginController {
     // const rows = await db.query(`SELECT username, password FROM users `);
     // const data = helper.emptyOrRows(rows);
 
-    const user = await myDataSource.getRepository(Users).find()
-    console.log(user);
+    const admins = await myDataSource.getRepository(Users).find()
 
     // Заменить на SQL Запрос
     const isAdminExists = admins
