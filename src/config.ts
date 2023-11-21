@@ -1,14 +1,20 @@
-import dotenv from "dotenv";
-dotenv.config();
+import dotenv from "dotenv"
+import { DataSource } from "typeorm"
 
-const config = {
-    port: process.env.PORT || 5000,
-    db: {
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        database: process.env.DB_NAME,
-        password: process.env.DB_PASSWORD
-    }
-}
+dotenv.config()
 
-export { config };
+const myDataSource = new DataSource({
+    type: "mysql",
+    host: process.env.DB_HOST,
+    port: 3306,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    entities: ["src/entity/*.js"],
+    logging: true,
+    synchronize: true,
+})
+
+const port = process.env.PORT || 5000
+
+export { port, myDataSource }
