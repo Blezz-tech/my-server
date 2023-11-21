@@ -6,9 +6,11 @@ import { validationResult } from 'express-validator';
 class SignupController {
   async post(req: Request, res: Response) {
     const result = validationResult(req);
-    if (result.isEmpty()) {
-      
+    if (!result.isEmpty()) {
+      console.log(result);
+      return res.status(401).send({ errors: result.array() });
     }
+
     const { username, password } = req.body;
 
     const isUserExist = await db.getRepository(Users).exist({

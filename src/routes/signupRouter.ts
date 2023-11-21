@@ -9,7 +9,7 @@ const signupRouter = Router();
 
 signupRouter.post("/",
     fastNotEmpty("username"),
-    fastNotEmpty("pasword"),
+    fastNotEmpty("password"),
     signupController.post);
 
 export { signupRouter };
