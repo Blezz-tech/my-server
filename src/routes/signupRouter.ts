@@ -1,12 +1,13 @@
 import { Router } from "express";
 import { signupController } from "../controllers/signupController";
-import { body, validationResult } from "express-validator";
+import { body } from "express-validator";
 import { db } from '../config';
 import { Users } from '../entity/Users';
 import { checkEmpty } from "../utils/helper";
 
 const signupRouter = Router();
 
+// Нужно сделать нормальную валидацию, НО КАК?!?!?!?
 signupRouter.post("/",
     [
         body("username").notEmpty(),
