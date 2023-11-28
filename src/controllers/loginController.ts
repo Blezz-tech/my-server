@@ -2,50 +2,43 @@ import { Request, Response } from 'express'
 import { Users } from "../entity/Users"
 import { db } from "../config"
 import { createJWT } from "../utils/jwt";
+import { Tokens } from '../entity/Tokens';
 // import { Tokens } from '../entity/Tokens.js';
 
 class LoginController {
   async post(req: Request, res: Response) {
     const { username, password } = req.body;
 
-    res.setHeader("content-type", "application/json");
+    const isUserExist = await db.getRepository(Users).exist({
+      where: {
+        "username": username,
+        "password": password
+      }
+    });
 
-    // const rows = await db.query(`SELECT username, password FROM users `);
-    // const data = helper.emptyOrRows(rows);
 
-    const user = await db.getRepository(Users).findBy({
-        "username": username
-    })
-    console.log(user);
-
-    // Заменить на SQL Запрос
-    // const isAdminExists = 
-    //   .map((user) => username == user.username && password == user.password)
-    //   .includes(true);
-
-    if (!false) {
+    if (!isUserExist) {
       res.status(401).send({
         message: "Unauthorized",
         errors: {
-          login: "invalid credentials",
+          login: "invalid credentials"
         },
-      })
+      });
     } else {
-      const jwt_token = createJWT(req);
+      const jwt_token = createJWT(String((Math.random() * 10000)) + new Date().getTime().toString() + username + new Date().getTime().toString() + password + new Date().getTime().toString());
 
+      const { id } = await db.getRepository(Users).findOne({
+        where: {
+          "username": username,
+          "password": password
+        }
+      });
 
-      // const user_id = await db.getRepository(Users).findBy({
-      //   "username": username
-      // })
-      // console.log(user_id)
-
-      // const admins = await db.getRepository(Tokens).find()
-
-      // const jwt_token = createJWT(req.body);
-
-      // Сделать запрост в бд на вставку
-      // INSERT INTO jwt_token
-      // VALUES (userId, jwt_token)
+      const new_token = await db.getRepository(Tokens).create({
+        users_id: id,
+        token: jwt_token
+      });
+      const results = await db.getRepository(Tokens).save(new_token);
 
       res.status(200).send({
         "data": {
