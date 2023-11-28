@@ -1,13 +1,13 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity()
-export class Users {
+export class Rooms {
     @PrimaryGeneratedColumn()
     id: Number
 
     @Column()
-    username: String
+    name: Number
 
     @Column()
-    password: String
+    desc_data: String
 }
