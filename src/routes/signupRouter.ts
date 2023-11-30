@@ -15,7 +15,7 @@ signupRouter.post("/",
     ],
     checkEmpty,
     async (req, res, next) => {
-        const { username } = req.body;
+        const username = req.body.username;
         const isUserExist = await db.getRepository(Users).exist({
             where: {
                 "username": username

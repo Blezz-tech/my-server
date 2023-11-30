@@ -1,30 +1,32 @@
 import { NextFunction, Request, Response } from "express";
 import { Tokens } from "../entity/Tokens";
 import { db } from "../config";
-// {
-//     "message": "Unauthorized",
-//         "errors": {
-//         "login": "invalid credentials"
-//     }
-// }
+import { isEmpty } from "class-validator";
+import { Users } from "../entity/Users";
 
 const checkAuth = async (req: Request, res: Response, next: NextFunction) => {
     const output = {
         "message": "Unauthorized",
         "errors": {
-            "token_not_exist": ""
+            "token": "invalid credentials"
         }
     };
 
-    const auth = req.headers.authorization;
+    if (isEmpty(req.headers.authorization)) {
+        return res.status(402).send(output);
+    }
+
+    const token: any = req.headers.authorization.slice(7);
 
     const isTokenExist = await db.getRepository(Tokens).exist({
         where: {
-            "token": auth
+            "token": token
         }
     });
 
-
+    if (!isTokenExist) {
+        return res.status(402).send(output);
+    }
 
     next();
 };
