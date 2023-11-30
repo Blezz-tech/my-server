@@ -6,7 +6,7 @@ export class Rooms {
     id: Number
 
     @Column()
-    name: Number
+    name: String
 
     @Column()
     desc_data: String
