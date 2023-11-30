@@ -1,9 +1,11 @@
-// import { Router } from "express";
-// const roomsRouter = Router();
+import { Router } from "express";
+const roomsRouter = Router();
 
-// import { roomsController } from "../controllers/roomsController";
+import { roomsController } from "../controllers/roomsController";
+import { checkAuth } from "../utils/auth";
 
-// // Нужна валидация Bearer token'а
-// roomsRouter.get("/", roomsController.get);
+roomsRouter.get("/",
+    checkAuth,
+    roomsController.get);
 
-// export { roomsRouter };
+export { roomsRouter };
