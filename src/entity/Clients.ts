@@ -6,8 +6,18 @@ export class Clients {
     id: Number
 
     @Column()
-    username: String
+    id_rooms: Number
 
     @Column()
-    password: String
+    fio: String
+
+    @Column()
+    email: String
+
+    @Column()
+    phone: String
+
+    @Column()
+    birth_date: String
+    
 }
