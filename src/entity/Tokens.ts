@@ -6,7 +6,7 @@ export class Tokens {
     id: Number
 
     @Column()
-    users_id: Number
+    admins_id: Number
 
     @Column()
     token: String

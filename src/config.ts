@@ -1,7 +1,7 @@
 import dotenv from "dotenv"
 import { DataSource } from "typeorm"
 
-import { Users } from "./entity/Users"
+import { Admins } from "./entity/Admins"
 import { Tokens } from "./entity/Tokens"
 import { Rooms } from "./entity/Rooms"
 
@@ -15,7 +15,7 @@ const db = new DataSource({
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    entities: [Users, Tokens, Rooms],
+    entities: [Admins, Tokens, Rooms],
     logging: true,
     synchronize: true,
 })
