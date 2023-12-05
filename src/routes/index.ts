@@ -8,6 +8,7 @@ import { loginRouter } from "./loginRouter";
 import { roomRouter } from "./roomRouter";
 import { roomsRouter } from "./roomsRouter";
 import { registerRouter } from "./registerRouter"
+import { userdataRouter } from "./userdataRouter";
 
 // use Routers
 router.use("/signup", signupRouter);
@@ -15,6 +16,7 @@ router.use("/login", loginRouter);
 router.use("/room", roomRouter);
 router.use("/rooms", roomsRouter);
 router.use("/register", registerRouter);
+router.use("/userdata", userdataRouter);
 router.use("/", (req, res) => {
     res.send('Hello World!')
 })
