@@ -10,6 +10,9 @@ import { body } from "express-validator";
 userdataRouter.patch("/:id",
     checkAuth,
     userdataController.patch);
+    
+userdataRouter.delete("/:id",
+    userdataController.delete);
 
 export { userdataRouter };
 

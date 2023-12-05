@@ -29,7 +29,7 @@ class RoomController {
     });
 
     if (!isRoomExist) {
-      return res.status(401).json({
+      return res.status(403).json({
         "error": {
           "message": "Not found"
         }
