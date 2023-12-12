@@ -5,6 +5,7 @@ import { Admins } from "./entity/Admins"
 import { Tokens } from "./entity/Tokens"
 import { Rooms } from "./entity/Rooms"
 import { Clients } from "./entity/Clients"
+import { Hotels } from "./entity/Hotels"
 
 
 dotenv.config()
@@ -16,7 +17,7 @@ const db = new DataSource({
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    entities: [Admins, Tokens, Rooms, Clients],
+    entities: [Admins, Tokens, Rooms, Clients, Hotels],
     logging: true,
     synchronize: true,
 })
