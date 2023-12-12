@@ -31,6 +31,21 @@ class UserdataController {
 
   async patch(req: Request, res: Response) {
     const id: any = req.params.id;
+
+    const isClientExist = await db.getRepository(Clients).exist({
+      where: {
+        "id": id
+      }
+    });
+
+    if (!isClientExist) {
+      return res.status(403).json({
+        "error": {
+          "message": "Not found"
+        }
+      });
+    }
+
     const { fio, email, phone, id_rooms, birth_date } = req.body;
     const clients_settings = {
       "id_rooms": id_rooms,
