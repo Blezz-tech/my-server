@@ -47,10 +47,55 @@ npm run dev
 
 ## Структура проекта
 
-Опишите структуру проекта и объясните, что делает каждый из файлов и директорий. Это может включать информацию о том, как организованы модели данных, маршруты, контроллеры и другие компоненты проекта.
+```
+.
+├── db-connect.sh
+├── docs
+│   ├── 3 Модуль.pdf
+│   ├── run.sh
+│   ├── Задание.pdf
+│   └── Памятка.md
+├── flake.lock
+├── flake.nix
+├── package.json
+├── package-lock.json
+├── README.md
+├── src
+│   ├── config.ts
+│   ├── controllers
+│   │   ├── adminController.ts
+│   │   ├── clientController.ts
+│   │   ├── hotelController.ts
+│   │   ├── roomController.ts
+│   │   └── tokenController.ts
+│   ├── entity
+│   │   ├── Admins.ts
+│   │   ├── Clients.ts
+│   │   ├── Hotels.ts
+│   │   ├── Rooms.ts
+│   │   └── Tokens.ts
+│   ├── index.ts
+│   ├── routes
+│   │   ├── hotelRouter.ts
+│   │   ├── index.ts
+│   │   ├── loginRouter.ts
+│   │   ├── registerRouter.ts
+│   │   ├── roomRouter.ts
+│   │   ├── roomsRouter.ts
+│   │   ├── signupRouter.ts
+│   │   ├── userdataRouter.ts
+│   │   └── usersinroomRouter.ts
+│   └── utils
+│       ├── auth.ts
+│       ├── helper.ts
+│       └── jwt.ts
+└── tsconfig.json
+```
 
 
 ## Работа с базой данных
+
+Запуск БД описывается в [Установка и настройка](#Установка и настройка)
 
 Описание работы с базой данных.
 
