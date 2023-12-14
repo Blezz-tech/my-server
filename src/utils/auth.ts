@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { Tokens } from "../entity/Tokens";
 import { db } from "../config";
-import { isEmpty } from "class-validator";
 
 const checkAuth = async (req: Request, res: Response, next: NextFunction) => {
     const output = {
@@ -11,7 +10,7 @@ const checkAuth = async (req: Request, res: Response, next: NextFunction) => {
         }
     };
 
-    if (isEmpty(req.headers.authorization)) {
+    if (req.headers.authorization == undefined) {
         return res.status(402).send(output);
     }
 
