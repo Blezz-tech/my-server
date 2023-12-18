@@ -50,7 +50,7 @@ npm run dev
 ```
 .
 ├── db-connect.sh
-├── docs
+├── tasks
 │   ├── 3 Модуль.pdf
 │   ├── run.sh
 │   ├── Задание.pdf
