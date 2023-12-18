@@ -111,53 +111,50 @@ npm run dev
 
 Запуск БД описывается в [Установка](#Установка)
 
-Описание работы с базой данных.
 
-Это может включать информацию о том, как создавать и обновлять таблицы, как выполнять запросы к базе данных и как обрабатывать ошибки базы данных.
+### Установка Базы данных
 
-Руководство по созданию
+```bash
+direnv allow
+```
 
-В TypeORM, модели данных представляют собой классы, которые описывают структуру таблиц базы данных. Например:
+### Запуск базы данных
 
-  import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+```bash
+devenv up
+```
 
-  @Entity()
-  export class User {
+### Создание моделей
+
+Создаётся файл в папке `/src/entity/`
+
+Пример `/src/entity/Rooms`
+
+```js
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
+
+@Entity()
+export class Rooms {
     @PrimaryGeneratedColumn()
-    id: number;
+    id: Number
 
     @Column()
-    name: string;
+    name: String
 
     @Column()
-    age: number;
-  }
+    desc_data: String
+}
+```
+
+и необходимо добавить его в массив моделей в файл `/src/config.ts`, там где создаётся база данных
+
+```js
+entities: [Admins, Tokens, Rooms, Clients, Hotels],
+```
 
 ## Маршруты и контроллеры
 
 
-Описание создание и использование маршрутов и контроллеров.
-
-Это может включать информацию о том, как обрабатывать различные типы запросов, как создавать ответы на запросы и как использовать промежуточное программное обеспечение (middleware).
-
-Руководство по контроллерам и маршрутам
-
-В Express.js, маршруты определяют URL-адреса, по которым будет доступно приложение, а контроллеры отвечают за обработку запросов, поступающих на эти URL-адреса. Например:
-
-  import express from "express";
-  import { User } from "./entity/User";
-
-  const app = express();
-  const router = express.Router();
-
-  router.get("/users", async (req, res) => {
-    const userRepository = getRepository(User);
-    const users = await userRepository.find();
-    res.send(users);
-  });
-
-  app.use(router);
-  app.listen(3000);
 
 
 ## Тестирование
