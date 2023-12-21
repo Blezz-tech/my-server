@@ -6,6 +6,7 @@ import { checkEmpty } from "../utils/helper";
 import { body } from "express-validator";
 import { clientController } from "../controllers/clientController";
 
+// Маршрут POST / используется для регистрации
 registerRouter.post("/",
     checkAuth,
     [
@@ -18,4 +19,5 @@ registerRouter.post("/",
     checkEmpty,
     clientController.create);
 
+// Экспорт роутера
 export { registerRouter };

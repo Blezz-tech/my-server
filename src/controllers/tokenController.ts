@@ -4,7 +4,13 @@ import { db } from "../config"
 import { createJWT } from "../utils/jwt";
 import { Tokens } from '../entity/Tokens';
 
+// Класс TokenController содержит методы для работы с токенами.
 class TokenController {
+  // Метод create создает новый токен.
+  // Он принимает HTTP-запрос и ответ, извлекает имя пользователя и пароль из тела запроса,
+  // проверяет, существует ли пользователь с данным именем и паролем,
+  // если пользователь существует, генерирует новый токен, сохраняет его в базе данных и отправляет ответ с новым токеном.
+  // Если пользователя не существует, отправляется ответ с сообщением об ошибке.
   async create(req: Request, res: Response) {
     const { username, password } = req.body;
 
@@ -14,7 +20,6 @@ class TokenController {
         "password": password
       }
     });
-
 
     if (!isUserExist) {
       res.status(401).send({
@@ -48,4 +53,5 @@ class TokenController {
   }
 }
 
+// Создаем экземпляр класса TokenController и экспортируем его.
 export const tokenController = new TokenController();

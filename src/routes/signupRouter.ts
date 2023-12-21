@@ -7,7 +7,7 @@ import { adminController } from "../controllers/adminController";
 
 const signupRouter = Router();
 
-// Нужно сделать нормальную валидацию, НО КАК?!?!?!?
+// Маршрут POST / используется для регистрации
 signupRouter.post("/",
     [
         body("username").notEmpty(),
@@ -36,4 +36,5 @@ signupRouter.post("/",
     adminController.create
 );
 
+// Экспорт роутера
 export { signupRouter };

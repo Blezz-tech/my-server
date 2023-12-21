@@ -1,21 +1,23 @@
 import { Router } from "express";
-const roomRouter = Router();
+const registerRouter = Router();
 
-import { roomController } from "../controllers/roomController";
-import { body } from "express-validator";
-import { checkEmpty } from "../utils/helper";
 import { checkAuth } from "../utils/auth";
+import { checkEmpty } from "../utils/helper";
+import { body } from "express-validator";
+import { clientController } from "../controllers/clientController";
 
-roomRouter.post("/",
+// Маршрут POST / используется для регистрации
+registerRouter.post("/",
+    checkAuth,
     [
-        body("name").notEmpty(),
-        body("desc_data").notEmpty()
+        body("fio").notEmpty(),
+        body("email").notEmpty(),
+        body("phone").notEmpty(),
+        body("id_rooms").notEmpty(),
+        body("birth_date").notEmpty()
     ],
     checkEmpty,
-    checkAuth,
-    roomController.create);
-roomRouter.delete("/:id",
-    checkAuth,
-    roomController.destroy);
+    clientController.create);
 
-export { roomRouter };
+// Экспорт роутера
+export { registerRouter };

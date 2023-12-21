@@ -2,7 +2,11 @@ import { db } from "../config.js";
 import { Hotels } from "../entity/Hotels.js";
 import { Request, Response } from 'express';
 
+// Класс HotelController содержит методы для работы с отелями.
 class HotelController {
+  // Метод create создает новый отель.
+  // Он принимает HTTP-запрос и ответ, извлекает данные отеля из тела запроса,
+  // проверяет их уникальность, создает нового отеля с этими данными, сохраняет его в базе данных и отправляет ответ с сообщением о том, что отель был успешно создан.
   async create(req: Request, res: Response) {
     const { name, number } = req.body;
     const hotel_settings = {
@@ -10,7 +14,7 @@ class HotelController {
       "number": number,
     };
 
-
+    // Проверка на уникальность данных отеля
     for (const [key, value] of Object.entries(hotel_settings)) {
       console.log(`${key}: ${value}`);
       const checking = {};
@@ -30,11 +34,8 @@ class HotelController {
       }
     }
 
-
-
     const new_hotel = await db.getRepository(Hotels).create({ name, number })
     const results = await db.getRepository(Hotels).save(new_hotel);
-
 
     res.status(200).send({
       data: {
@@ -45,8 +46,8 @@ class HotelController {
     });
   }
 
+  // Метод getAll возвращает список всех отелей.
   async getAll(req: Request, res: Response) {
-
     const results = await db.getRepository(Hotels).find();
     const processd_result = results.map(item => ({
       name: item.name,
@@ -58,6 +59,9 @@ class HotelController {
     });
   }
 
+  // Метод destroy удаляет отель по его ID.
+  // Если отель существует, он удаляется из базы данных и отправляется ответ с сообщением о том, что отель был успешно удален.
+  // Если отеля не существует, отправляется ответ с сообщением об ошибке.
   async destroy(req: Request, res: Response) {
     const id: any = req.params.id;
 
@@ -82,8 +86,8 @@ class HotelController {
         "message": "Deleted"
       }
     });
-
   }
 }
 
+// Создаем экземпляр класса HotelController и экспортируем его.
 export const hotelController = new HotelController();
